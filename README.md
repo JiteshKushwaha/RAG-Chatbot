@@ -1,5 +1,5 @@
 # Samvidhan·AI — Ask the Constitution
-## LINK : https://rag-chatbot-jiteshkushwaha.vercel.app/
+## LINK : https://rag-chatbot-lemon-theta.vercel.app/
 A student RAG chatbot that answers questions about the **Constitution of India** only from source PDFs, shows exact sources (book · PDF page · Article), and refuses honestly when the answer isn't there.
 > ⚠️ Student learning project. Not legal advice. See [DISCLAIMER.md](DISCLAIMER.md).
 
