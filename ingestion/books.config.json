@@ -1,0 +1,10 @@
+{
+    "books": [
+      { "file": "book1.pdf", "title": "The Constitution of India", "kind": "constitution", "include": true, "language": "en", "note": "Primary source." },
+      { "file": "book2.pdf", "title": "TODO: set title", "kind": "commentary", "include": true, "language": "en", "note": "Run `python ingest.py --inspect` and classify." },
+      { "file": "book3.pdf", "title": "TODO: set title", "kind": "commentary", "include": true, "language": "en", "note": "Run --inspect and classify." },
+      { "file": "book4.pdf", "title": "TODO: set title", "kind": "commentary", "include": true, "language": "en", "note": "Run --inspect and classify." },
+      { "file": "book5.pdf", "title": "TODO: set title", "kind": "cybersecurity", "include": false, "language": "en", "note": "Cybersecurity books are OUT OF SCOPE for this app. Keep include=false." },
+      { "file": "book6.pdf", "title": "TODO: set title", "kind": "cybersecurity", "include": false, "language": "en", "note": "Cybersecurity books are OUT OF SCOPE for this app. Keep include=false." }
+    ]
+}  
