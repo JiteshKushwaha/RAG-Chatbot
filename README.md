@@ -19,6 +19,8 @@ flowchart LR
   G --> H[Grounding check · citation enforcement]
   H --> UI[Streamed answer + server-built sources]
 ```
+LINK : https://rag-chatbot-jiteshkushwaha.vercel.app/
+
 File Structure 
 ```
 rag-chatbot
