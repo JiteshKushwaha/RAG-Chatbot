@@ -19,6 +19,87 @@ flowchart LR
   G --> H[Grounding check · citation enforcement]
   H --> UI[Streamed answer + server-built sources]
 ```
+File Structure 
+```
+rag-chatbot
+├── data
+│   ├── article_index.json
+│   ├── chunks.jsonl
+│   ├── embeddings.f16.bin
+│   └── manifest.json
+├── DISCLAIMER.md
+├── ingestion
+│   ├── article_parser.py
+│   ├── books.config.json
+│   ├── clean.py
+│   ├── eval_questions.json
+│   ├── ingest.py
+│   └── requirements.txt
+├── next.config.js
+├── package.json
+├── postcss.config.js
+├── raw_pdfs
+│   ├── book1.pdf
+│   ├── book2.pdf
+│   ├── book3.pdf
+│   ├── book4.pdf
+│   ├── book5.pdf
+│   └── book6.pdf
+├── README.md
+├── scripts
+│   └── eval.ts
+├── src
+│   ├── app
+│   │   ├── api
+│   │   │   ├── chat
+│   │   │   │   └── route.ts
+│   │   │   └── health
+│   │   │       └── route.ts
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components
+│   │   ├── AboutSheet.tsx
+│   │   ├── ArticleBrowser.tsx
+│   │   ├── Chakra.tsx
+│   │   ├── Chat.tsx
+│   │   ├── Composer.tsx
+│   │   ├── DisclaimerModal.tsx
+│   │   ├── EmptyState.tsx
+│   │   ├── Message.tsx
+│   │   ├── SourceSheet.tsx
+│   │   └── ThemeToggle.tsx
+│   ├── lib
+│   │   ├── articleLookup.ts
+│   │   ├── bm25.ts
+│   │   ├── config.ts
+│   │   ├── dense.ts
+│   │   ├── fusion.ts
+│   │   ├── groq.ts
+│   │   ├── grounding.ts
+│   │   ├── loadIndex.ts
+│   │   ├── pipeline.ts
+│   │   ├── prompt.ts
+│   │   ├── queryRewrite.ts
+│   │   ├── rateLimit.ts
+│   │   ├── retrieve.ts
+│   │   ├── sse.ts
+│   │   ├── tokenize.ts
+│   │   └── types.ts
+│   └── styles
+│       └── tokens.css
+├── tailwind.config.ts
+├── tests
+│   ├── articleLookup.test.ts
+│   ├── bm25.test.ts
+│   ├── fixtures.ts
+│   ├── grounding.test.ts
+│   ├── query.test.ts
+│   └── refusal.test.ts
+├── tsconfig.json
+├── vercel.json
+└── vitest.config.ts
+```
 
 ## Why not Ollama / FAISS / PyTorch on Vercel?
 Vercel functions are capped at ~250 MB unzipped and short execution times. PyTorch + sentence-transformers alone exceed that, and Ollama needs a long-running GPU/CPU server. So embeddings are precomputed offline (Phase A). At runtime, retrieval is pure TypeScript; only the *query* is embedded through the Hugging Face Inference API (optional). Generation runs on Groq.
