@@ -1,0 +1,33 @@
+{
+  "count": 3884,
+  "articles_indexed": 313,
+  "embedding_model": "BAAI/bge-base-en-v1.5",
+  "dim": 768,
+  "build_date": "2026-10-05T15:37:16.971351+00:00",
+  "books": [
+    {
+      "file": "book1.pdf",
+      "pages": 402,
+      "pages_dropped": 0,
+      "chunks": 1398
+    },
+    {
+      "file": "book2.pdf",
+      "pages": 268,
+      "pages_dropped": 0,
+      "chunks": 856
+    },
+    {
+      "file": "book3.pdf",
+      "pages": 256,
+      "pages_dropped": 0,
+      "chunks": 1307
+    },
+    {
+      "file": "book4.pdf",
+      "pages": 99,
+      "pages_dropped": 0,
+      "chunks": 323
+    }
+  ]
+}
