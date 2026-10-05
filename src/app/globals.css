@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html.theme-fade, html.theme-fade * { transition: background-color .3s ease, color .3s ease, border-color .3s ease !important; }
+.dot-grid {
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 8px; }
+mark { background: var(--accent-tint); color: inherit; border-radius: 3px; padding: 0 2px; }
+
+@layer components {
+  .glass { background: var(--glass); backdrop-filter: blur(22px) saturate(1.6); -webkit-backdrop-filter: blur(22px) saturate(1.6); border: 1px solid var(--line); box-shadow: var(--shadow); }
+  /* .icon-btn { @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-2 text-ink/80 transition-all duration-200 ease-spring hover:bg-tint hover:text-ink active:scale-95; } */
+  .icon-btn { @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-2 text-ink opacity-80 transition-all duration-200 ease-spring hover:bg-tint hover:text-ink hover:opacity-100 active:scale-95; }
+  .btn-primary { @apply rounded-full bg-accent text-white font-medium py-3 transition-transform duration-200 ease-spring hover:scale-[1.02] active:scale-[.97]; }
+  .btn-ghost { @apply inline-flex items-center gap-2 rounded-full border border-line px-3 py-1.5 text-sm hover:bg-tint transition; }
+  .send-btn { @apply grid place-items-center h-10 w-10 shrink-0 rounded-full bg-accent text-white transition-all duration-300 ease-spring hover:scale-110 active:scale-90 disabled:opacity-30 disabled:hover:scale-100; }
+  .composer-glow { box-shadow: var(--shadow), 0 0 80px -10px var(--accent-tint); }
+  .user-pill { @apply max-w-[85%] rounded-[1.25rem] bg-tint px-4 py-2.5 text-[15px] leading-relaxed; }
+  .sketch-card {
+    @apply relative rounded-2xl bg-surface p-4 transition-all duration-300 ease-spring hover:-translate-y-0.5 cursor-pointer;
+    transform: rotate(var(--r, 0deg));
+    border: 1.5px solid var(--line);
+    box-shadow: 2px 3px 0 var(--accent-tint);
+  }
+  .sketch-card:hover { border-color: var(--accent); box-shadow: 3px 4px 0 var(--accent-tint); transform: rotate(0) translateY(-2px); }
+  .cite-chip { @apply inline-flex items-center justify-center min-w-[1.35rem] h-[1.35rem] px-1 mx-0.5 rounded-md bg-tint text-accent font-mono text-[11px] align-[2px] hover:bg-accent hover:text-white transition; }
+  .chip { @apply rounded-md border border-line bg-raised px-2 py-1; }
+  .statute { @apply relative my-4 rounded-r-xl bg-raised py-4 pl-5 pr-4 font-serif text-[17px] leading-[1.7]; border-left: 3px solid var(--accent); }
+  .statute-chip { @apply block mb-2 font-mono text-[11px] text-accent tracking-wide; font-style: normal; }
+  .badge-warn { @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px]; color: var(--warning); background: color-mix(in srgb, var(--warning) 14%, transparent); }
+  .conf-dot { @apply inline-block h-2 w-2 rounded-full; }
+  .conf-high { background: var(--success); } .conf-medium { background: var(--warning); } .conf-low { background: var(--danger); }
+  .side-h { @apply px-2 pt-3 pb-1 text-[11px] uppercase tracking-widest text-muted; }
+  .side-item { @apply block w-full text-left rounded-lg px-2 py-1.5 text-[13px] hover:bg-tint transition truncate; }
+  .tricolor { height: 2px; background: linear-gradient(90deg, transparent 0 35%, var(--saffron) 35% 45%, var(--white) 45% 55%, var(--green) 55% 65%, transparent 65%); opacity: .7; }
+  .sheet { @apply fixed bottom-0 inset-x-0 max-h-[85dvh] overflow-y-auto rounded-t-[1.75rem] p-6 slide-up sm:inset-y-3 sm:right-3 sm:left-auto sm:bottom-3 sm:w-[440px] sm:max-h-none sm:rounded-[1.75rem] sm:slide-left; }
+  .shimmer { background: linear-gradient(90deg, var(--line) 25%, var(--accent-tint) 50%, var(--line) 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; }
+}
+
+.prose-answer { @apply text-[16px] leading-[1.75]; }
+.prose-answer p { @apply my-3; }
+.prose-answer ul { @apply list-disc pl-5 my-3 space-y-1.5; }
+.prose-answer ol { @apply list-decimal pl-5 my-3 space-y-1.5; }
+.prose-answer strong { @apply font-semibold; }
+.prose-answer a { @apply text-accent underline underline-offset-2; }
+.prose-answer h1, .prose-answer h2, .prose-answer h3 { @apply font-semibold mt-5 mb-2; }
+.prose-answer.streaming > :last-child::after { content: ""; display: inline-block; width: .5ch; height: 1.1em; margin-left: 2px; vertical-align: -3px; background: var(--accent); border-radius: 2px; animation: blink 1s steps(2) infinite; }
+
+@keyframes shimmer { to { background-position: -200% 0; } }
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes msgIn { from { opacity: 0; transform: translateY(8px); } }
+@keyframes pop { from { opacity: 0; transform: scale(.94); } }
+@keyframes fade { from { opacity: 0; } }
+@keyframes up { from { transform: translateY(100%); } }
+@keyframes left { from { transform: translateX(110%); } }
+
+.chakra-spin { animation: spin 6s linear infinite; }
+.msg-in { animation: msgIn .45s cubic-bezier(.34,1.56,.64,1) both; }
+.pop-in { animation: pop .35s cubic-bezier(.34,1.56,.64,1) both; }
+.fade-in { animation: fade .25s ease both; }
+.slide-up { animation: up .4s cubic-bezier(.32,.72,0,1) both; }
+@media (min-width: 640px) { .sm\:slide-left { animation: left .4s cubic-bezier(.32,.72,0,1) both; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .chakra-spin { animation: none; }
+}
